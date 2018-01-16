@@ -35,11 +35,16 @@ lm.utils.copy( lm.items.RowOrColumn.prototype, {
 	addChild: function( contentItem, index, _$suspendResize ) {
 
 		var newItemSize, itemSize, i, splitterElement;
+		var maximised = contentItem.maximiseOnOpen;
 
 		contentItem = this.layoutManager._$normalizeContentItem( contentItem, this );
 
 		if( index === undefined ) {
 			index = this.contentItems.length;
+		}
+
+		if(maximised && contentItem.layoutManager._maximisedItem) {
+			contentItem.layoutManager._maximisedItem.toggleMaximise();
 		}
 
 		if( this.contentItems.length > 0 ) {
@@ -81,6 +86,11 @@ lm.utils.copy( lm.items.RowOrColumn.prototype, {
 		this.callDownwards( 'setSize' );
 		this.emitBubblingEvent( 'stateChanged' );
 		this._validateDocking();
+
+		// maximise current row or column
+		if(maximised) {
+			contentItem.toggleMaximise();
+		}
 	},
 
 	/**

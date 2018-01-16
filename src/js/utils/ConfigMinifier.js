@@ -38,7 +38,7 @@ lm.utils.ConfigMinifier = function() {
 		'activeItemIndex',
 		'reorderEnabled',
 		'borderGrabWidth',
-
+		'maximiseOnOpen'
 
 
 
