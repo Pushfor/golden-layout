@@ -43,7 +43,8 @@ lm.utils.copy( lm.items.RowOrColumn.prototype, {
 			index = this.contentItems.length;
 		}
 
-		if(maximised && contentItem.layoutManager._maximisedItem) {
+		// minimised item if it exists
+		if(contentItem.layoutManager._maximisedItem) {
 			contentItem.layoutManager._maximisedItem.toggleMaximise();
 		}
 
